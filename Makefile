@@ -1,4 +1,4 @@
-.PHONY: all build deps generate help test
+.PHONY: all build deps generate help test version
 
 CHECK_FILES ?= $$(go list ./... | grep -v /vendor/)
 
@@ -21,3 +21,10 @@ generate: ## Run code generation
 
 test: ## Run tests
 	go test -v $(CHECK_FILES)
+
+version: ## Run goversion. Usage: make version bump="patch" [files="-file=README.md"]
+	@if [ -z "$(bump)" ]; then \
+		echo "Error: You must provide a bump argument, e.g. bump=\"patch\"" >&2; \
+		exit 1; \
+	fi
+	go tool github.com/bcomnes/goversion/v2 $(files) $(bump)
