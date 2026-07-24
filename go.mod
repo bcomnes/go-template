@@ -1,4 +1,4 @@
-module github.com/bcomnes/{{name}}
+module github.com/bcomnes/__name__
 
 go 1.25.0
 
