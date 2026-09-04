@@ -7,5 +7,7 @@ rules:
       policies:
         # Official GitHub actions use major tags so they receive compatible security updates.
         "actions/*": ref-pin
+        # go-bump publishes compatible updates through its trusted moving major ref.
+        "bcomnes/go-bump": ref-pin
         # Require immutable references for every third-party action.
         "*": hash-pin
